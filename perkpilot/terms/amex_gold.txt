@@ -1,0 +1,14 @@
+PERKPILOT SYNTHETIC TERMS: Amex Gold
+SYNTHETIC PARAPHRASE. Written for the perkpilot demo project. This is not issuer text: it is simplified, it may be out of date, and its numbers may not match the real card's terms. Do not rely on it for real decisions.
+
+[AG-1] Annual fee — The annual membership fee is $325. It is billed on your first statement and again on each account anniversary.
+[AG-2] Foreign transactions — No foreign transaction fee is charged on purchases made outside the United States.
+[AG-3] Restaurants — You earn 4 points per dollar on purchases at restaurants worldwide, including takeout and delivery. The 4x rate applies to up to $50,000 in purchases per calendar year, then 1 point per dollar. Purchases made through a mobile card reader or a third-party payment processor may not be recognized as restaurant purchases and do not earn the 4x rate.
+[AG-4] U.S. supermarkets — You earn 4 points per dollar at U.S. supermarkets on up to $25,000 in purchases per calendar year, then 1 point per dollar. Superstores, warehouse clubs, convenience stores and meal-kit delivery services are not treated as supermarkets and do not earn the 4x rate.
+[AG-5] Flights — You earn 3 points per dollar on flights booked directly with airlines or through Amex Travel.
+[AG-6] Prepaid hotels — You earn 2 points per dollar on prepaid hotel bookings made through Amex Travel.
+[AG-7] Everything else — You earn 1 point per dollar on other eligible purchases. Cash advances, balance transfers, fees and gift card purchases do not earn points.
+[AG-8] Dining credit — You can receive up to $10 in statement credits each month for eligible purchases. Eligible merchants: Grubhub, The Cheesecake Factory, Goldbelly, Wine.com and Five Guys. Enrollment is required. The credit resets on the first day of each calendar month and unused amounts do not roll over. Excluded: gift card purchases.
+[AG-9] Uber Cash — You can receive up to $10 in Uber Cash each month after adding the card to your Uber account. Eligible merchants: Uber Eats and Uber rides in the United States. No separate enrollment is required. The benefit resets on the first day of each calendar month.
+[AG-10] Resy credit — You can receive up to $50 in statement credits twice per year: once from January through June and once from July through December. Eligible merchants: Resy restaurants in the United States. Enrollment is required. Excluded: Resy membership fees.
+[AG-11] Dunkin' credit — You can receive up to $7 in statement credits each month. Eligible merchants: Dunkin' locations in the United States. Enrollment is required. The credit resets on the first day of each calendar month.
