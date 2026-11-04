@@ -1,0 +1,14 @@
+PERKPILOT SYNTHETIC TERMS: Sapphire Reserve
+SYNTHETIC PARAPHRASE. Written for the perkpilot demo project. This is not issuer text: it is simplified, it may be out of date, and its numbers may not match the real card's terms. Do not rely on it for real decisions.
+
+[SR-1] Annual fee — The annual fee is $795, charged once each cardmember year.
+[SR-2] Foreign transactions — No foreign transaction fee is charged on purchases made outside the United States.
+[SR-3] Chase Travel — You earn 8 points per dollar on travel purchased through Chase Travel.
+[SR-4] Flights — You earn 4 points per dollar on flights booked directly with the airline.
+[SR-5] Hotels — You earn 4 points per dollar on hotel stays booked directly with the hotel.
+[SR-6] Dining — You earn 3 points per dollar on dining at restaurants worldwide, including takeout and eligible delivery services.
+[SR-7] Everything else — You earn 1 point per dollar on other eligible purchases. Cash advances, balance transfers and fees do not earn points.
+[SR-8] Travel credit — You can receive up to $300 in statement credits each cardmember year for travel purchases. Eligible merchants: travel purchases. The credit is applied automatically and no enrollment is required. The credit resets on your account anniversary. Purchases reimbursed by this credit do not earn points.
+[SR-9] The Edit hotel credit — You can receive up to $250 in statement credits twice per year: once from January through June and once from July through December. Eligible merchants: prepaid bookings with The Edit by Chase Travel. No separate enrollment is required. Excluded: bookings made outside The Edit.
+[SR-10] Dining credit — You can receive up to $150 in statement credits twice per year: once from January through June and once from July through December. Eligible merchants: Sapphire Exclusive Tables restaurants. No separate enrollment is required.
+[SR-11] DoorDash credit — You can receive up to $5 in statement credits each month on DoorDash restaurant orders. Eligible merchants: DoorDash. Enrollment is required: you must activate a DashPass membership. The credit resets on the first day of each calendar month.

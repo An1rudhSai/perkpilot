@@ -175,3 +175,65 @@ class ScriptedLLM:
     def _task_extract_clause(self, messages, tools) -> ChatResult:
         payload = json.loads(messages[-1]["content"])
         return ChatResult(content=json.dumps(extract_clause_offline(payload["title"], payload["text"])))
+
+
+# ---------------------------------------------------------------- validation
+
+def _fmt(x: float) -> str:
+    return f"{x:,.0f}" if float(x).is_integer() else f"{x:g}"
+
+
+def validate_offline(kind: str, rule: dict, clause: str) -> dict:
+    """Deterministic re-check of one extracted rule against its clause text."""
+    issues: list[str] = []
+    low = clause.lower()
+    if kind == "earning_rule":
+        m = rule["multiplier"]
+        rate = f"{_fmt(m)} point"
+        if rate not in low:
+            issues.append(f"multiplier {m:g} is not stated in the clause")
+        for ch in rule.get("booking_channel") or []:
+            phrases = [p for p, v in CHANNEL_PHRASES.items() if v == ch]
+            sents = [s for s in _sentences(clause) if any(p in s.lower() for p in phrases)]
+            if not sents:
+                issues.append(f"booking channel {ch} is not mentioned")
+            elif not any(rate in s.lower() for s in sents):
+                other = re.search(NUM + r" points? per dollar", sents[0])
+                stated = f" ({other[0]})" if other else ""
+                issues.append(f"booking channel {ch} comes from a sentence with a different rate{stated}")
+        cap = rule.get("cap")
+        if cap and f"${_fmt(cap['amount'])}" not in clause:
+            issues.append(f"cap amount ${cap['amount']:g} is not stated")
+    elif kind == "credit":
+        amt = rule["amount"]
+        if f"${_fmt(amt)}" not in clause:
+            issues.append(f"amount ${amt:g} is not stated")
+        others = {_num(x) for x in re.findall(r"\$" + NUM, clause)} - {amt}
+        for o in sorted(others):
+            issues.append(f"clause also mentions ${o:g}, which the rule does not capture")
+        period_words = {"monthly": "each month", "semi_annual": "twice per year", "annual": " year"}
+        if period_words[rule["period"]] not in low:
+            issues.append(f"period {rule['period']} is not supported by the clause wording")
+        er = rule.get("enrollment_required")
+        if er is True and "enrollment is required" not in low:
+            issues.append("enrollment_required=true but the clause does not say enrollment is required")
+        if er is False and "enrollment is required" in low and "no " not in low.split("enrollment is required")[0][-12:]:
+            issues.append("enrollment_required=false but the clause says enrollment is required")
+    elif kind == "fee":
+        for key in ("annual_fee", "foreign_transaction_fee_pct"):
+            v = rule.get(key)
+            if v is None:
+                continue
+            ok = (f"${_fmt(v)}" in clause) if key == "annual_fee" else (
+                f"{_fmt(v)}%" in clause or (v == 0 and "no foreign transaction fee" in low))
+            if not ok and key in rule.get("_present", []):
+                issues.append(f"{key}={v:g} is not stated in its clause")
+    return {"agrees": not issues, "issues": issues}
+
+
+def _task_validate_rule(self, messages, tools) -> ChatResult:
+    p = json.loads(messages[-1]["content"])
+    return ChatResult(content=json.dumps(validate_offline(p["kind"], p["rule"], p["clause_text"])))
+
+
+ScriptedLLM._task_validate_rule = _task_validate_rule

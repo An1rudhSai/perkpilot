@@ -1,0 +1,14 @@
+PERKPILOT SYNTHETIC TERMS: Amex Platinum
+SYNTHETIC PARAPHRASE. Written for the perkpilot demo project. This is not issuer text: it is simplified, it may be out of date, and its numbers may not match the real card's terms. Do not rely on it for real decisions.
+
+[AP-1] Annual fee — The annual membership fee is $695. It is billed on your first statement and again on each account anniversary.
+[AP-2] Foreign transactions — No foreign transaction fee is charged on purchases made outside the United States.
+[AP-3] Flights — You earn 5 points per dollar on flights booked directly with airlines or through Amex Travel, on up to $500,000 in purchases per calendar year, then 1 point per dollar.
+[AP-4] Prepaid hotels — You earn 5 points per dollar on prepaid hotel bookings made through Amex Travel. Hotel stays booked directly with the hotel earn 1 point per dollar.
+[AP-5] Everything else — You earn 1 point per dollar on other eligible purchases. Cash advances, balance transfers, fees and gift card purchases do not earn points.
+[AP-6] Airline fee credit — You can receive up to $200 in statement credits each calendar year for incidental fees charged by one qualifying airline that you select. Eligible merchants: incidental fees at your selected airline. Enrollment is required. The credit resets each calendar year on January 1. Excluded: airline tickets, upgrades, mileage purchases and gift cards.
+[AP-7] Uber Cash — You can receive up to $15 in Uber Cash each month, plus an additional $20 in December, after adding the card to your Uber account. Eligible merchants: Uber Eats and Uber rides in the United States. No separate enrollment is required. The benefit resets on the first day of each calendar month.
+[AP-8] Saks credit — You can receive up to $50 in statement credits twice per year: once from January through June and once from July through December. Eligible merchants: Saks Fifth Avenue stores and saks.com. Enrollment is required.
+[AP-9] Digital entertainment credit — You can receive up to $20 in statement credits each month. Eligible merchants: Disney+, Hulu, ESPN+, Peacock, The New York Times and The Wall Street Journal. Enrollment is required. The credit resets on the first day of each calendar month.
+[AP-10] Hotel credit — You can receive up to $200 in statement credits each calendar year on prepaid Fine Hotels + Resorts or The Hotel Collection bookings made through Amex Travel. Eligible merchants: Amex Travel. No separate enrollment is required. The credit resets each calendar year on January 1.
+[AP-11] CLEAR credit — You can receive up to $199 in statement credits each calendar year for a CLEAR Plus membership. Eligible merchants: CLEAR. No separate enrollment is required. The credit resets each calendar year on January 1.

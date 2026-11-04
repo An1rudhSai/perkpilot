@@ -1,0 +1,10 @@
+PERKPILOT SYNTHETIC TERMS: Freedom Unlimited
+SYNTHETIC PARAPHRASE. Written for the perkpilot demo project. This is not issuer text: it is simplified, it may be out of date, and its numbers may not match the real card's terms. Do not rely on it for real decisions.
+
+[FU-1] Annual fee — There is no annual fee ($0).
+[FU-2] Foreign transactions — A foreign transaction fee of 3% of each transaction in U.S. dollars applies to purchases made outside the United States.
+[FU-3] Chase Travel — You earn 5 points per dollar on travel purchased through Chase Travel.
+[FU-4] Dining — You earn 3 points per dollar on dining at restaurants, including takeout and eligible delivery services.
+[FU-5] Drugstores — You earn 3 points per dollar on purchases at drugstores.
+[FU-6] Everything else — You earn 1.5 points per dollar on all other purchases. Cash advances, balance transfers and fees do not earn points.
+[FU-7] Points redemption — Points can be redeemed for cash back at a value of 1 cent per point.
