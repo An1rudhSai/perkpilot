@@ -275,11 +275,13 @@ def _fact(q: str, it: str, rules: dict) -> str | None:
             vals = [m["value"] for m in f]
             text = f"{name(card)} {c['name']['value']} eligible merchants: {', '.join(vals)}."
             return answer(text, vals, [{"text": text, "citations": [cite(m) for m in f]}])
-        text = {"enrollment": f"Enrollment {'is' if f['value'] else 'is not'} required for the {name(card)} "
-                              f"{c['name']['value']}.",
-                "reset": f"The {name(card)} {c['name']['value']} resets on a {f['value'].replace('_', ' ')} basis.",
-                "credit_amount": f"The {name(card)} {c['name']['value']} is up to ${f['value']:g} per "
-                                 f"{c['period']['value'].replace('_', '-')} period."}[it]
+        label = f"{name(card)} {c['name']['value']}"
+        if it == "enrollment":
+            text = f"Enrollment {'is' if f['value'] else 'is not'} required for the {label}."
+        elif it == "reset":
+            text = f"The {label} resets on a {str(f['value']).replace('_', ' ')} basis."
+        else:
+            text = f"The {label} is up to ${f['value']:g} per {c['period']['value'].replace('_', '-')} period."
         return answer(text, f["value"], [{"text": text, "citations": [cite(f)]}])
     rules_ = rules.get("earning_rules") or []
     if not rules_:

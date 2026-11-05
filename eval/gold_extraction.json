@@ -1,0 +1,501 @@
+{
+ "_note": "Hand-written from the synthetic terms in perkpilot/terms. 'field~' means the list must contain the value. expected=null means the field must be absent.",
+ "checks": [
+  {
+   "id": "x01",
+   "card": "amex_gold",
+   "kind": "fee",
+   "key": "fees",
+   "field": "annual_fee",
+   "expected": 325
+  },
+  {
+   "id": "x02",
+   "card": "amex_gold",
+   "kind": "fee",
+   "key": "fees",
+   "field": "foreign_transaction_fee_pct",
+   "expected": 0
+  },
+  {
+   "id": "x03",
+   "card": "amex_platinum",
+   "kind": "fee",
+   "key": "fees",
+   "field": "annual_fee",
+   "expected": 695
+  },
+  {
+   "id": "x04",
+   "card": "amex_platinum",
+   "kind": "fee",
+   "key": "fees",
+   "field": "foreign_transaction_fee_pct",
+   "expected": 0
+  },
+  {
+   "id": "x05",
+   "card": "sapphire_reserve",
+   "kind": "fee",
+   "key": "fees",
+   "field": "annual_fee",
+   "expected": 795
+  },
+  {
+   "id": "x06",
+   "card": "sapphire_reserve",
+   "kind": "fee",
+   "key": "fees",
+   "field": "foreign_transaction_fee_pct",
+   "expected": 0
+  },
+  {
+   "id": "x07",
+   "card": "freedom_unlimited",
+   "kind": "fee",
+   "key": "fees",
+   "field": "annual_fee",
+   "expected": 0
+  },
+  {
+   "id": "x08",
+   "card": "freedom_unlimited",
+   "kind": "fee",
+   "key": "fees",
+   "field": "foreign_transaction_fee_pct",
+   "expected": 3
+  },
+  {
+   "id": "x09",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "dining",
+   "field": "multiplier",
+   "expected": 4
+  },
+  {
+   "id": "x10",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "dining",
+   "field": "cap.amount",
+   "expected": 50000
+  },
+  {
+   "id": "x11",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "dining",
+   "field": "cap.after_multiplier",
+   "expected": 1
+  },
+  {
+   "id": "x12",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "dining",
+   "field": "exclusions~",
+   "expected": "mobile_card_reader"
+  },
+  {
+   "id": "x13",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "dining",
+   "field": "exclusions~",
+   "expected": "third_party_processor"
+  },
+  {
+   "id": "x14",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "us_supermarkets",
+   "field": "multiplier",
+   "expected": 4
+  },
+  {
+   "id": "x15",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "us_supermarkets",
+   "field": "cap.amount",
+   "expected": 25000
+  },
+  {
+   "id": "x16",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "us_supermarkets",
+   "field": "exclusions~",
+   "expected": "warehouse_club"
+  },
+  {
+   "id": "x17",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "flights",
+   "field": "multiplier",
+   "expected": 3
+  },
+  {
+   "id": "x18",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "flights",
+   "field": "booking_channel",
+   "expected": [
+    "airline_direct",
+    "amex_travel"
+   ]
+  },
+  {
+   "id": "x19",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "hotels",
+   "field": "multiplier",
+   "expected": 2
+  },
+  {
+   "id": "x20",
+   "card": "amex_gold",
+   "kind": "earning",
+   "key": "hotels",
+   "field": "booking_channel",
+   "expected": [
+    "amex_travel"
+   ]
+  },
+  {
+   "id": "x21",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.dining_credit",
+   "field": "amount",
+   "expected": 10
+  },
+  {
+   "id": "x22",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.dining_credit",
+   "field": "period",
+   "expected": "monthly"
+  },
+  {
+   "id": "x23",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.dining_credit",
+   "field": "enrollment_required",
+   "expected": true
+  },
+  {
+   "id": "x24",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.dining_credit",
+   "field": "eligible_merchants~",
+   "expected": "Grubhub"
+  },
+  {
+   "id": "x25",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.resy_credit",
+   "field": "period",
+   "expected": "semi_annual"
+  },
+  {
+   "id": "x26",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.resy_credit",
+   "field": "reset",
+   "expected": "calendar_half"
+  },
+  {
+   "id": "x27",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "flights",
+   "field": "multiplier",
+   "expected": 5
+  },
+  {
+   "id": "x28",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "flights",
+   "field": "cap.amount",
+   "expected": 500000
+  },
+  {
+   "id": "x29",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "flights",
+   "field": "booking_channel",
+   "expected": [
+    "airline_direct",
+    "amex_travel"
+   ]
+  },
+  {
+   "id": "x30",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "hotels",
+   "field": "multiplier",
+   "expected": 5
+  },
+  {
+   "id": "x31",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "hotels",
+   "field": "booking_channel",
+   "expected": [
+    "amex_travel"
+   ]
+  },
+  {
+   "id": "x32",
+   "card": "amex_platinum",
+   "kind": "earning",
+   "key": "other",
+   "field": "exclusions~",
+   "expected": "gift_card"
+  },
+  {
+   "id": "x33",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.airline_fee_credit",
+   "field": "amount",
+   "expected": 200
+  },
+  {
+   "id": "x34",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.airline_fee_credit",
+   "field": "period",
+   "expected": "annual"
+  },
+  {
+   "id": "x35",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.airline_fee_credit",
+   "field": "enrollment_required",
+   "expected": true
+  },
+  {
+   "id": "x36",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.uber_cash",
+   "field": "amount",
+   "expected": 15
+  },
+  {
+   "id": "x37",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.saks_credit",
+   "field": "period",
+   "expected": "semi_annual"
+  },
+  {
+   "id": "x38",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.digital_entertainment_credit",
+   "field": "amount",
+   "expected": 20
+  },
+  {
+   "id": "x39",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.digital_entertainment_credit",
+   "field": "eligible_merchants~",
+   "expected": "Disney+"
+  },
+  {
+   "id": "x40",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.hotel_credit",
+   "field": "enrollment_required",
+   "expected": false
+  },
+  {
+   "id": "x41",
+   "card": "amex_platinum",
+   "kind": "credit",
+   "key": "amex_platinum.clear_credit",
+   "field": "amount",
+   "expected": 199
+  },
+  {
+   "id": "x42",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "travel",
+   "field": "multiplier",
+   "expected": 8
+  },
+  {
+   "id": "x43",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "travel",
+   "field": "booking_channel",
+   "expected": [
+    "chase_travel"
+   ]
+  },
+  {
+   "id": "x44",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "flights",
+   "field": "multiplier",
+   "expected": 4
+  },
+  {
+   "id": "x45",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "flights",
+   "field": "booking_channel",
+   "expected": [
+    "airline_direct"
+   ]
+  },
+  {
+   "id": "x46",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "hotels",
+   "field": "booking_channel",
+   "expected": [
+    "hotel_direct"
+   ]
+  },
+  {
+   "id": "x47",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "dining",
+   "field": "multiplier",
+   "expected": 3
+  },
+  {
+   "id": "x48",
+   "card": "sapphire_reserve",
+   "kind": "earning",
+   "key": "dining",
+   "field": "booking_channel",
+   "expected": null
+  },
+  {
+   "id": "x49",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.travel_credit",
+   "field": "amount",
+   "expected": 300
+  },
+  {
+   "id": "x50",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.travel_credit",
+   "field": "reset",
+   "expected": "cardmember_year"
+  },
+  {
+   "id": "x51",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.travel_credit",
+   "field": "enrollment_required",
+   "expected": false
+  },
+  {
+   "id": "x52",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.the_edit_hotel_credit",
+   "field": "amount",
+   "expected": 250
+  },
+  {
+   "id": "x53",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.the_edit_hotel_credit",
+   "field": "period",
+   "expected": "semi_annual"
+  },
+  {
+   "id": "x54",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.dining_credit",
+   "field": "amount",
+   "expected": 150
+  },
+  {
+   "id": "x55",
+   "card": "sapphire_reserve",
+   "kind": "credit",
+   "key": "sapphire_reserve.doordash_credit",
+   "field": "enrollment_required",
+   "expected": true
+  },
+  {
+   "id": "x56",
+   "card": "freedom_unlimited",
+   "kind": "earning",
+   "key": "travel",
+   "field": "multiplier",
+   "expected": 5
+  },
+  {
+   "id": "x57",
+   "card": "freedom_unlimited",
+   "kind": "earning",
+   "key": "dining",
+   "field": "multiplier",
+   "expected": 3
+  },
+  {
+   "id": "x58",
+   "card": "freedom_unlimited",
+   "kind": "earning",
+   "key": "drugstores",
+   "field": "multiplier",
+   "expected": 3
+  },
+  {
+   "id": "x59",
+   "card": "freedom_unlimited",
+   "kind": "earning",
+   "key": "other",
+   "field": "multiplier",
+   "expected": 1.5
+  },
+  {
+   "id": "x60",
+   "card": "amex_gold",
+   "kind": "credit",
+   "key": "amex_gold.uber_cash",
+   "field": "enrollment_required",
+   "expected": false
+  }
+ ]
+}

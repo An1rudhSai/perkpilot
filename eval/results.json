@@ -1,0 +1,2014 @@
+{
+ "llm": "offline-scripted",
+ "extraction": {
+  "n_checks": 60,
+  "per_field": {
+   "amount": {
+    "correct": 8,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 8,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "annual_fee": {
+    "correct": 4,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 4,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "booking_channel": {
+    "correct": 7,
+    "wrong": 1,
+    "missing": 0,
+    "spurious": 0,
+    "n": 8,
+    "precision": 0.875,
+    "recall": 0.875
+   },
+   "cap.after_multiplier": {
+    "correct": 1,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 1,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "cap.amount": {
+    "correct": 3,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 3,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "eligible_merchants": {
+    "correct": 2,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 2,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "enrollment_required": {
+    "correct": 6,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 6,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "exclusions": {
+    "correct": 4,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 4,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "foreign_transaction_fee_pct": {
+    "correct": 4,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 4,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "multiplier": {
+    "correct": 13,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 13,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "period": {
+    "correct": 5,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 5,
+    "precision": 1.0,
+    "recall": 1.0
+   },
+   "reset": {
+    "correct": 2,
+    "wrong": 0,
+    "missing": 0,
+    "spurious": 0,
+    "n": 2,
+    "precision": 1.0,
+    "recall": 1.0
+   }
+  },
+  "overall": {
+   "correct": 59,
+   "wrong": 1,
+   "missing": 0,
+   "spurious": 0,
+   "precision": 0.9833333333333333,
+   "recall": 0.9833333333333333
+  },
+  "failures": [
+   {
+    "id": "x31",
+    "card": "amex_platinum",
+    "kind": "earning",
+    "key": "hotels",
+    "field": "booking_channel",
+    "expected": [
+     "amex_travel"
+    ],
+    "got": [
+     "amex_travel",
+     "hotel_direct"
+    ]
+   }
+  ],
+  "rejections": [],
+  "validator_disagreements": [
+   {
+    "card": "amex_platinum",
+    "rule_id": "amex_platinum.hotels",
+    "kind": "earning_rule",
+    "agrees": false,
+    "issues": [
+     "booking channel hotel_direct comes from a sentence with a different rate (1 point per dollar)"
+    ],
+    "validator": "offline-scripted"
+   },
+   {
+    "card": "amex_platinum",
+    "rule_id": "amex_platinum.uber_cash",
+    "kind": "credit",
+    "agrees": false,
+    "issues": [
+     "clause also mentions $20, which the rule does not capture"
+    ],
+    "validator": "offline-scripted"
+   }
+  ]
+ },
+ "qa": {
+  "plain": {
+   "metrics": {
+    "n": 40,
+    "answer_correctness": 0.4666666666666667,
+    "overall_accuracy": 0.35,
+    "citation_accuracy": 0.0,
+    "abstention_rate_unanswerable": 0.0,
+    "false_abstention_rate": 0.0,
+    "hallucination_rate": 0.65
+   },
+   "seconds": 0.0,
+   "answers": [
+    {
+     "id": "q01",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-3"
+     ]
+    },
+    {
+     "id": "q02",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q03",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-4",
+      "FU-6"
+     ]
+    },
+    {
+     "id": "q04",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "sapphire_reserve",
+      "freedom_unlimited"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-3",
+      "SR-6",
+      "FU-4"
+     ]
+    },
+    {
+     "id": "q05",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [],
+     "supporting": [
+      "AP-3"
+     ]
+    },
+    {
+     "id": "q06",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [],
+     "supporting": [
+      "SR-3"
+     ]
+    },
+    {
+     "id": "q07",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q08",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "freedom_unlimited",
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [],
+     "supporting": [
+      "FU-5"
+     ]
+    },
+    {
+     "id": "q09",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-3",
+      "AG-2",
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q10",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [],
+     "supporting": [
+      "SR-5",
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q11",
+     "category": "expiring",
+     "correct": false,
+     "abstained": false,
+     "value": [
+      "amex_gold.dining_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.doordash_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-11",
+      "AP-7",
+      "AP-9",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q12",
+     "category": "expiring",
+     "correct": false,
+     "abstained": false,
+     "value": [
+      "amex_gold.dining_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.resy_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.airline_fee_credit",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.saks_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-10",
+      "AG-11",
+      "AP-6",
+      "AP-7",
+      "AP-8",
+      "AP-9",
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q13",
+     "category": "expiring",
+     "correct": false,
+     "abstained": false,
+     "value": [
+      "amex_gold.dining_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash"
+     ],
+     "cited": [],
+     "supporting": [
+      "AP-7",
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q14",
+     "category": "expiring",
+     "correct": false,
+     "abstained": false,
+     "value": [
+      "amex_gold.dining_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q15",
+     "category": "expiring",
+     "correct": false,
+     "abstained": false,
+     "value": [
+      "amex_gold.dining_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-11"
+     ]
+    },
+    {
+     "id": "q16",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": false,
+     "value": 50.0,
+     "expected": 20,
+     "cited": [],
+     "supporting": [
+      "AG-10"
+     ]
+    },
+    {
+     "id": "q17",
+     "category": "credit_remaining",
+     "correct": true,
+     "abstained": false,
+     "value": 50.0,
+     "expected": 50,
+     "cited": [],
+     "supporting": [
+      "AP-8"
+     ]
+    },
+    {
+     "id": "q18",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": false,
+     "value": 20.0,
+     "expected": 6.01,
+     "cited": [],
+     "supporting": [
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q19",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": false,
+     "value": 200.0,
+     "expected": 95,
+     "cited": [],
+     "supporting": [
+      "AP-6"
+     ]
+    },
+    {
+     "id": "q20",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "AG-1"
+     ]
+    },
+    {
+     "id": "q21",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q22",
+     "category": "fee_worth",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": false,
+     "cited": [],
+     "supporting": [
+      "SR-1"
+     ]
+    },
+    {
+     "id": "q23",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "FU-1"
+     ]
+    },
+    {
+     "id": "q24",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 695.0,
+     "expected": 695,
+     "cited": [],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q25",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 3.0,
+     "expected": 3,
+     "cited": [],
+     "supporting": [
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q26",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 25000.0,
+     "expected": 25000,
+     "cited": [],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q27",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "AG-8"
+     ]
+    },
+    {
+     "id": "q28",
+     "category": "fact",
+     "correct": false,
+     "abstained": false,
+     "value": "calendar_year",
+     "expected": "cardmember_year",
+     "cited": [],
+     "supporting": [
+      "SR-8"
+     ]
+    },
+    {
+     "id": "q29",
+     "category": "fact",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": false,
+     "cited": [],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q30",
+     "category": "fact",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": 1,
+     "cited": [],
+     "supporting": [
+      "FU-7"
+     ]
+    },
+    {
+     "id": "q31",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q32",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q33",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q34",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q35",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": 200.0,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q36",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q37",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q38",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q39",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q40",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    }
+   ]
+  },
+  "rag": {
+   "metrics": {
+    "n": 40,
+    "answer_correctness": 0.3333333333333333,
+    "overall_accuracy": 0.475,
+    "citation_accuracy": 0.9285714285714286,
+    "abstention_rate_unanswerable": 0.9,
+    "false_abstention_rate": 0.5333333333333333,
+    "hallucination_rate": 0.3333333333333333
+   },
+   "seconds": 0.01,
+   "answers": [
+    {
+     "id": "q01",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [
+      "AG-3"
+     ],
+     "supporting": [
+      "AG-3"
+     ]
+    },
+    {
+     "id": "q02",
+     "category": "which_card",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q03",
+     "category": "which_card",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-4",
+      "FU-6"
+     ]
+    },
+    {
+     "id": "q04",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "sapphire_reserve",
+      "freedom_unlimited"
+     ],
+     "cited": [
+      "AG-3"
+     ],
+     "supporting": [
+      "AG-3",
+      "SR-6",
+      "FU-4"
+     ]
+    },
+    {
+     "id": "q05",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [
+      "AP-3"
+     ],
+     "supporting": [
+      "AP-3"
+     ]
+    },
+    {
+     "id": "q06",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [
+      "AP-3"
+     ],
+     "supporting": [
+      "SR-3"
+     ]
+    },
+    {
+     "id": "q07",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [
+      "AP-4"
+     ],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q08",
+     "category": "which_card",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [],
+     "supporting": [
+      "FU-5"
+     ]
+    },
+    {
+     "id": "q09",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [
+      "AG-3"
+     ],
+     "supporting": [
+      "AG-3",
+      "AG-2",
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q10",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [
+      "AP-4"
+     ],
+     "supporting": [
+      "SR-5",
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q11",
+     "category": "expiring",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.doordash_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-11",
+      "AP-7",
+      "AP-9",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q12",
+     "category": "expiring",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.resy_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.airline_fee_credit",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.saks_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-10",
+      "AG-11",
+      "AP-6",
+      "AP-7",
+      "AP-8",
+      "AP-9",
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q13",
+     "category": "expiring",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash"
+     ],
+     "cited": [],
+     "supporting": [
+      "AP-7",
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q14",
+     "category": "expiring",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [],
+     "supporting": [
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q15",
+     "category": "expiring",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash"
+     ],
+     "cited": [],
+     "supporting": [
+      "AG-9",
+      "AG-11"
+     ]
+    },
+    {
+     "id": "q16",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": 20,
+     "cited": [],
+     "supporting": [
+      "AG-10"
+     ]
+    },
+    {
+     "id": "q17",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": 50,
+     "cited": [],
+     "supporting": [
+      "AP-8"
+     ]
+    },
+    {
+     "id": "q18",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": 6.01,
+     "cited": [],
+     "supporting": [
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q19",
+     "category": "credit_remaining",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": 95,
+     "cited": [],
+     "supporting": [
+      "AP-6"
+     ]
+    },
+    {
+     "id": "q20",
+     "category": "fee_worth",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "AG-1"
+     ]
+    },
+    {
+     "id": "q21",
+     "category": "fee_worth",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q22",
+     "category": "fee_worth",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": false,
+     "cited": [],
+     "supporting": [
+      "SR-1"
+     ]
+    },
+    {
+     "id": "q23",
+     "category": "fee_worth",
+     "correct": false,
+     "abstained": true,
+     "value": null,
+     "expected": true,
+     "cited": [],
+     "supporting": [
+      "FU-1"
+     ]
+    },
+    {
+     "id": "q24",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 695.0,
+     "expected": 695,
+     "cited": [
+      "AP-1"
+     ],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q25",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 3.0,
+     "expected": 3,
+     "cited": [
+      "FU-2"
+     ],
+     "supporting": [
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q26",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 25000.0,
+     "expected": 25000,
+     "cited": [
+      "AG-4"
+     ],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q27",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [
+      "AG-8"
+     ],
+     "supporting": [
+      "AG-8"
+     ]
+    },
+    {
+     "id": "q28",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": "cardmember_year",
+     "expected": "cardmember_year",
+     "cited": [
+      "SR-8"
+     ],
+     "supporting": [
+      "SR-8"
+     ]
+    },
+    {
+     "id": "q29",
+     "category": "fact",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": false,
+     "cited": [
+      "AP-4"
+     ],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q30",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 1.0,
+     "expected": 1,
+     "cited": [
+      "FU-7"
+     ],
+     "supporting": [
+      "FU-7"
+     ]
+    },
+    {
+     "id": "q31",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q32",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q33",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q34",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q35",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q36",
+     "category": "unanswerable",
+     "correct": false,
+     "abstained": false,
+     "value": false,
+     "expected": null,
+     "cited": [
+      "AG-9"
+     ],
+     "supporting": []
+    },
+    {
+     "id": "q37",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q38",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q39",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q40",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    }
+   ]
+  },
+  "agent": {
+   "metrics": {
+    "n": 40,
+    "answer_correctness": 0.9333333333333333,
+    "overall_accuracy": 0.95,
+    "citation_accuracy": 1.0,
+    "abstention_rate_unanswerable": 1.0,
+    "false_abstention_rate": 0.0,
+    "hallucination_rate": 0.06666666666666667
+   },
+   "seconds": 0.01,
+   "answers": [
+    {
+     "id": "q01",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [
+      "AG-3",
+      "AP-5",
+      "FU-4",
+      "SR-6"
+     ],
+     "supporting": [
+      "AG-3"
+     ]
+    },
+    {
+     "id": "q02",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [
+      "AG-4",
+      "AP-5",
+      "FU-6",
+      "SR-7"
+     ],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q03",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "freedom_unlimited",
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [
+      "AG-4",
+      "AG-7",
+      "AP-5",
+      "FU-6",
+      "SR-7"
+     ],
+     "supporting": [
+      "AG-4",
+      "FU-6"
+     ]
+    },
+    {
+     "id": "q04",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "sapphire_reserve",
+      "freedom_unlimited"
+     ],
+     "cited": [
+      "AG-3",
+      "AG-7",
+      "AP-5",
+      "FU-4",
+      "SR-6"
+     ],
+     "supporting": [
+      "AG-3",
+      "SR-6",
+      "FU-4"
+     ]
+    },
+    {
+     "id": "q05",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [
+      "AG-5",
+      "AP-3",
+      "FU-3",
+      "FU-6",
+      "SR-3",
+      "SR-4"
+     ],
+     "supporting": [
+      "AP-3"
+     ]
+    },
+    {
+     "id": "q06",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "sapphire_reserve",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [
+      "AG-5",
+      "AG-7",
+      "AP-3",
+      "AP-5",
+      "FU-3",
+      "SR-3",
+      "SR-4"
+     ],
+     "supporting": [
+      "SR-3"
+     ]
+    },
+    {
+     "id": "q07",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "amex_platinum"
+     ],
+     "cited": [
+      "AG-6",
+      "AP-4",
+      "FU-3",
+      "FU-6",
+      "SR-3",
+      "SR-5",
+      "SR-7"
+     ],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q08",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "freedom_unlimited",
+     "expected": [
+      "freedom_unlimited"
+     ],
+     "cited": [
+      "AG-7",
+      "AP-5",
+      "FU-5",
+      "SR-7"
+     ],
+     "supporting": [
+      "FU-5"
+     ]
+    },
+    {
+     "id": "q09",
+     "category": "which_card",
+     "correct": true,
+     "abstained": false,
+     "value": "amex_gold",
+     "expected": [
+      "amex_gold"
+     ],
+     "cited": [
+      "AG-2",
+      "AG-3",
+      "AP-2",
+      "AP-5",
+      "FU-2",
+      "FU-4",
+      "SR-2",
+      "SR-6"
+     ],
+     "supporting": [
+      "AG-3",
+      "AG-2",
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q10",
+     "category": "which_card",
+     "correct": false,
+     "abstained": false,
+     "value": "amex_platinum",
+     "expected": [
+      "sapphire_reserve"
+     ],
+     "cited": [
+      "AG-6",
+      "AG-7",
+      "AP-4",
+      "FU-3",
+      "FU-6",
+      "SR-3",
+      "SR-5"
+     ],
+     "supporting": [
+      "SR-5",
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q11",
+     "category": "expiring",
+     "correct": true,
+     "abstained": false,
+     "value": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.doordash_credit"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.doordash_credit"
+     ],
+     "cited": [
+      "AG-11",
+      "AG-9",
+      "AP-7",
+      "AP-9",
+      "SR-11"
+     ],
+     "supporting": [
+      "AG-9",
+      "AG-11",
+      "AP-7",
+      "AP-9",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q12",
+     "category": "expiring",
+     "correct": true,
+     "abstained": false,
+     "value": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.resy_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.airline_fee_credit",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.saks_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.resy_credit",
+      "amex_gold.uber_cash",
+      "amex_platinum.airline_fee_credit",
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.saks_credit",
+      "amex_platinum.uber_cash",
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [
+      "AG-10",
+      "AG-11",
+      "AG-9",
+      "AP-6",
+      "AP-7",
+      "AP-8",
+      "AP-9",
+      "SR-10",
+      "SR-11",
+      "SR-9"
+     ],
+     "supporting": [
+      "AG-9",
+      "AG-10",
+      "AG-11",
+      "AP-6",
+      "AP-7",
+      "AP-8",
+      "AP-9",
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q13",
+     "category": "expiring",
+     "correct": true,
+     "abstained": false,
+     "value": [
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash"
+     ],
+     "expected": [
+      "amex_platinum.digital_entertainment_credit",
+      "amex_platinum.uber_cash"
+     ],
+     "cited": [
+      "AP-7",
+      "AP-9"
+     ],
+     "supporting": [
+      "AP-7",
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q14",
+     "category": "expiring",
+     "correct": true,
+     "abstained": false,
+     "value": [
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "expected": [
+      "sapphire_reserve.dining_credit",
+      "sapphire_reserve.doordash_credit",
+      "sapphire_reserve.the_edit_hotel_credit"
+     ],
+     "cited": [
+      "SR-10",
+      "SR-11",
+      "SR-9"
+     ],
+     "supporting": [
+      "SR-9",
+      "SR-10",
+      "SR-11"
+     ]
+    },
+    {
+     "id": "q15",
+     "category": "expiring",
+     "correct": true,
+     "abstained": false,
+     "value": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash"
+     ],
+     "expected": [
+      "amex_gold.dunkin_credit",
+      "amex_gold.uber_cash"
+     ],
+     "cited": [
+      "AG-11",
+      "AG-9"
+     ],
+     "supporting": [
+      "AG-9",
+      "AG-11"
+     ]
+    },
+    {
+     "id": "q16",
+     "category": "credit_remaining",
+     "correct": true,
+     "abstained": false,
+     "value": 20.0,
+     "expected": 20,
+     "cited": [
+      "AG-10"
+     ],
+     "supporting": [
+      "AG-10"
+     ]
+    },
+    {
+     "id": "q17",
+     "category": "credit_remaining",
+     "correct": true,
+     "abstained": false,
+     "value": 50.0,
+     "expected": 50,
+     "cited": [
+      "AP-8"
+     ],
+     "supporting": [
+      "AP-8"
+     ]
+    },
+    {
+     "id": "q18",
+     "category": "credit_remaining",
+     "correct": true,
+     "abstained": false,
+     "value": 6.01,
+     "expected": 6.01,
+     "cited": [
+      "AP-9"
+     ],
+     "supporting": [
+      "AP-9"
+     ]
+    },
+    {
+     "id": "q19",
+     "category": "credit_remaining",
+     "correct": true,
+     "abstained": false,
+     "value": 95.0,
+     "expected": 95,
+     "cited": [
+      "AP-6"
+     ],
+     "supporting": [
+      "AP-6"
+     ]
+    },
+    {
+     "id": "q20",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [
+      "AG-1",
+      "AG-10",
+      "AG-11",
+      "AG-8",
+      "AG-9"
+     ],
+     "supporting": [
+      "AG-1"
+     ]
+    },
+    {
+     "id": "q21",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [
+      "AP-1",
+      "AP-10",
+      "AP-11",
+      "AP-6",
+      "AP-7",
+      "AP-8",
+      "AP-9"
+     ],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q22",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": false,
+     "expected": false,
+     "cited": [
+      "SR-1",
+      "SR-10",
+      "SR-11",
+      "SR-8"
+     ],
+     "supporting": [
+      "SR-1"
+     ]
+    },
+    {
+     "id": "q23",
+     "category": "fee_worth",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [
+      "FU-1"
+     ],
+     "supporting": [
+      "FU-1"
+     ]
+    },
+    {
+     "id": "q24",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 695.0,
+     "expected": 695,
+     "cited": [
+      "AP-1"
+     ],
+     "supporting": [
+      "AP-1"
+     ]
+    },
+    {
+     "id": "q25",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 3.0,
+     "expected": 3,
+     "cited": [
+      "FU-2"
+     ],
+     "supporting": [
+      "FU-2"
+     ]
+    },
+    {
+     "id": "q26",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 25000.0,
+     "expected": 25000,
+     "cited": [
+      "AG-4"
+     ],
+     "supporting": [
+      "AG-4"
+     ]
+    },
+    {
+     "id": "q27",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": true,
+     "expected": true,
+     "cited": [
+      "AG-8"
+     ],
+     "supporting": [
+      "AG-8"
+     ]
+    },
+    {
+     "id": "q28",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": "cardmember_year",
+     "expected": "cardmember_year",
+     "cited": [
+      "SR-8"
+     ],
+     "supporting": [
+      "SR-8"
+     ]
+    },
+    {
+     "id": "q29",
+     "category": "fact",
+     "correct": false,
+     "abstained": false,
+     "value": true,
+     "expected": false,
+     "cited": [
+      "AP-4"
+     ],
+     "supporting": [
+      "AP-4"
+     ]
+    },
+    {
+     "id": "q30",
+     "category": "fact",
+     "correct": true,
+     "abstained": false,
+     "value": 1.0,
+     "expected": 1,
+     "cited": [
+      "FU-7"
+     ],
+     "supporting": [
+      "FU-7"
+     ]
+    },
+    {
+     "id": "q31",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q32",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q33",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q34",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q35",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q36",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q37",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q38",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q39",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    },
+    {
+     "id": "q40",
+     "category": "unanswerable",
+     "correct": true,
+     "abstained": true,
+     "value": null,
+     "expected": null,
+     "cited": [],
+     "supporting": []
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,456 @@
+{
+ "_note": "Answers are hand-checked against the synthetic terms. Data-dependent answers (expiring, credit_remaining, fee_worth) refer to the seeded synthetic transactions (seed 7) as of 2026-11-04 and were frozen after a manual check of the credit arithmetic.",
+ "items": [
+  {
+   "id": "q01",
+   "question": "Which card should I use for an $80 dinner at a restaurant?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "amex_gold"
+   ],
+   "supporting_clauses": [
+    "AG-3"
+   ]
+  },
+  {
+   "id": "q02",
+   "question": "Which card should I use for $120 of groceries at Whole Foods?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "amex_gold"
+   ],
+   "supporting_clauses": [
+    "AG-4"
+   ]
+  },
+  {
+   "id": "q03",
+   "question": "Which card should I use for $200 of groceries at Costco?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "freedom_unlimited"
+   ],
+   "supporting_clauses": [
+    "AG-4",
+    "FU-6"
+   ]
+  },
+  {
+   "id": "q04",
+   "question": "Which card should I use at a food truck that takes payment with a Square card reader, $15 lunch?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "sapphire_reserve",
+    "freedom_unlimited"
+   ],
+   "supporting_clauses": [
+    "AG-3",
+    "SR-6",
+    "FU-4"
+   ]
+  },
+  {
+   "id": "q05",
+   "question": "Which card should I use for a $450 Delta flight booked directly with the airline?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "amex_platinum"
+   ],
+   "supporting_clauses": [
+    "AP-3"
+   ]
+  },
+  {
+   "id": "q06",
+   "question": "Which card should I use for a $600 flight booked through Chase Travel?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "sapphire_reserve"
+   ],
+   "supporting_clauses": [
+    "SR-3"
+   ]
+  },
+  {
+   "id": "q07",
+   "question": "Which card should I use for a $300 hotel booked through Amex Travel?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "amex_platinum"
+   ],
+   "supporting_clauses": [
+    "AP-4"
+   ]
+  },
+  {
+   "id": "q08",
+   "question": "Which card should I use for a $40 prescription at CVS?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "freedom_unlimited"
+   ],
+   "supporting_clauses": [
+    "FU-5"
+   ]
+  },
+  {
+   "id": "q09",
+   "question": "Which card should I use for a $100 dinner in Paris?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "amex_gold"
+   ],
+   "supporting_clauses": [
+    "AG-3",
+    "AG-2",
+    "FU-2"
+   ]
+  },
+  {
+   "id": "q10",
+   "question": "Which card should I use for a $250 hotel booked directly with Marriott?",
+   "category": "which_card",
+   "type": "card",
+   "answer": [
+    "sapphire_reserve"
+   ],
+   "supporting_clauses": [
+    "SR-5",
+    "AP-4"
+   ]
+  },
+  {
+   "id": "q11",
+   "question": "Which credits expire this month?",
+   "category": "expiring",
+   "type": "set",
+   "answer": [
+    "amex_gold.dunkin_credit",
+    "amex_gold.uber_cash",
+    "amex_platinum.digital_entertainment_credit",
+    "amex_platinum.uber_cash",
+    "sapphire_reserve.doordash_credit"
+   ],
+   "supporting_clauses": [
+    "AG-9",
+    "AG-11",
+    "AP-7",
+    "AP-9",
+    "SR-11"
+   ]
+  },
+  {
+   "id": "q12",
+   "question": "Which of my credits expire in the next 60 days?",
+   "category": "expiring",
+   "type": "set",
+   "answer": [
+    "amex_gold.dunkin_credit",
+    "amex_gold.resy_credit",
+    "amex_gold.uber_cash",
+    "amex_platinum.airline_fee_credit",
+    "amex_platinum.digital_entertainment_credit",
+    "amex_platinum.saks_credit",
+    "amex_platinum.uber_cash",
+    "sapphire_reserve.dining_credit",
+    "sapphire_reserve.doordash_credit",
+    "sapphire_reserve.the_edit_hotel_credit"
+   ],
+   "supporting_clauses": [
+    "AG-9",
+    "AG-10",
+    "AG-11",
+    "AP-6",
+    "AP-7",
+    "AP-8",
+    "AP-9",
+    "SR-9",
+    "SR-10",
+    "SR-11"
+   ]
+  },
+  {
+   "id": "q13",
+   "question": "Which Amex Platinum credits are about to expire this month?",
+   "category": "expiring",
+   "type": "set",
+   "answer": [
+    "amex_platinum.digital_entertainment_credit",
+    "amex_platinum.uber_cash"
+   ],
+   "supporting_clauses": [
+    "AP-7",
+    "AP-9"
+   ]
+  },
+  {
+   "id": "q14",
+   "question": "Which Sapphire Reserve credits will I lose by the end of the year if I don't use them?",
+   "category": "expiring",
+   "type": "set",
+   "answer": [
+    "sapphire_reserve.dining_credit",
+    "sapphire_reserve.doordash_credit",
+    "sapphire_reserve.the_edit_hotel_credit"
+   ],
+   "supporting_clauses": [
+    "SR-9",
+    "SR-10",
+    "SR-11"
+   ]
+  },
+  {
+   "id": "q15",
+   "question": "Which Amex Gold credits expire in the next 30 days?",
+   "category": "expiring",
+   "type": "set",
+   "answer": [
+    "amex_gold.dunkin_credit",
+    "amex_gold.uber_cash"
+   ],
+   "supporting_clauses": [
+    "AG-9",
+    "AG-11"
+   ]
+  },
+  {
+   "id": "q16",
+   "question": "How much is left on my Amex Gold Resy credit?",
+   "category": "credit_remaining",
+   "type": "number",
+   "answer": 20,
+   "supporting_clauses": [
+    "AG-10"
+   ]
+  },
+  {
+   "id": "q17",
+   "question": "How much Saks credit do I have left on the Platinum?",
+   "category": "credit_remaining",
+   "type": "number",
+   "answer": 50,
+   "supporting_clauses": [
+    "AP-8"
+   ]
+  },
+  {
+   "id": "q18",
+   "question": "How much of my Platinum digital entertainment credit is left this month?",
+   "category": "credit_remaining",
+   "type": "number",
+   "answer": 6.01,
+   "supporting_clauses": [
+    "AP-9"
+   ]
+  },
+  {
+   "id": "q19",
+   "question": "How much is left on my Platinum airline fee credit this year?",
+   "category": "credit_remaining",
+   "type": "number",
+   "answer": 95,
+   "supporting_clauses": [
+    "AP-6"
+   ]
+  },
+  {
+   "id": "q20",
+   "question": "Is the Amex Gold annual fee worth it?",
+   "category": "fee_worth",
+   "type": "bool",
+   "answer": true,
+   "supporting_clauses": [
+    "AG-1"
+   ]
+  },
+  {
+   "id": "q21",
+   "question": "Is the Amex Platinum annual fee worth it?",
+   "category": "fee_worth",
+   "type": "bool",
+   "answer": true,
+   "supporting_clauses": [
+    "AP-1"
+   ]
+  },
+  {
+   "id": "q22",
+   "question": "Is the Sapphire Reserve annual fee worth it?",
+   "category": "fee_worth",
+   "type": "bool",
+   "answer": false,
+   "supporting_clauses": [
+    "SR-1"
+   ]
+  },
+  {
+   "id": "q23",
+   "question": "Is the Freedom Unlimited worth keeping?",
+   "category": "fee_worth",
+   "type": "bool",
+   "answer": true,
+   "supporting_clauses": [
+    "FU-1"
+   ]
+  },
+  {
+   "id": "q24",
+   "question": "What is the annual fee on the Amex Platinum?",
+   "category": "fact",
+   "type": "number",
+   "answer": 695,
+   "supporting_clauses": [
+    "AP-1"
+   ]
+  },
+  {
+   "id": "q25",
+   "question": "What is the foreign transaction fee on the Freedom Unlimited?",
+   "category": "fact",
+   "type": "number",
+   "answer": 3,
+   "supporting_clauses": [
+    "FU-2"
+   ]
+  },
+  {
+   "id": "q26",
+   "question": "What is the spending cap on the Amex Gold's 4x at U.S. supermarkets?",
+   "category": "fact",
+   "type": "number",
+   "answer": 25000,
+   "supporting_clauses": [
+    "AG-4"
+   ]
+  },
+  {
+   "id": "q27",
+   "question": "Is enrollment required for the Amex Gold dining credit?",
+   "category": "fact",
+   "type": "bool",
+   "answer": true,
+   "supporting_clauses": [
+    "AG-8"
+   ]
+  },
+  {
+   "id": "q28",
+   "question": "When does the Sapphire Reserve travel credit reset?",
+   "category": "fact",
+   "type": "text",
+   "answer": "cardmember_year",
+   "supporting_clauses": [
+    "SR-8"
+   ]
+  },
+  {
+   "id": "q29",
+   "question": "Does the Amex Platinum earn 5x on hotels booked directly with the hotel?",
+   "category": "fact",
+   "type": "bool",
+   "answer": false,
+   "supporting_clauses": [
+    "AP-4"
+   ]
+  },
+  {
+   "id": "q30",
+   "question": "How much is a Freedom Unlimited point worth when redeemed for cash back?",
+   "category": "fact",
+   "type": "number",
+   "answer": 1,
+   "supporting_clauses": [
+    "FU-7"
+   ]
+  },
+  {
+   "id": "q31",
+   "question": "Does the Amex Gold include cell phone protection?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q32",
+   "question": "What is the APR on the Sapphire Reserve?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q33",
+   "question": "What is the late payment fee on the Freedom Unlimited?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q34",
+   "question": "Does the Amex Platinum include airport lounge access?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q35",
+   "question": "How much is the Amex Gold's hotel credit?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q36",
+   "question": "Is enrollment required for the Freedom Unlimited's Uber Cash?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q37",
+   "question": "What rental car insurance does the Sapphire Reserve provide?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q38",
+   "question": "What is the authorized user fee on the Amex Platinum?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q39",
+   "question": "Does the Freedom Unlimited have a sign-up bonus?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  },
+  {
+   "id": "q40",
+   "question": "What is the credit limit on my Amex Gold?",
+   "category": "unanswerable",
+   "type": "abstain",
+   "answer": null,
+   "supporting_clauses": []
+  }
+ ]
+}
