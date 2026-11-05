@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>perkpilot</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#16181d;--muted:#5d6470;--line:#e2e5ea;--accent:#2f5bd3;--ok:#2e8b57;--warn:#c4581a;--mark:#ffe58a;--track:#e9ecf1}
+@media (prefers-color-scheme:dark){:root{--bg:#121418;--panel:#1b1e24;--ink:#e8eaee;--muted:#9aa1ad;--line:#2b2f37;--accent:#7d9cff;--ok:#5cc28a;--warn:#f08a4b;--mark:#6b5a12;--track:#2a2e36}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:20px 24px 8px;display:flex;flex-wrap:wrap;gap:12px;align-items:baseline}
+h1{margin:0;font-size:22px}h2{font-size:16px;margin:0 0 12px}.muted{color:var(--muted)}.badge{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+main{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;padding:8px 24px 32px}
+@media (max-width:900px){main{grid-template-columns:1fr;padding:8px 16px 24px}header{padding:16px 16px 4px}}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.card-group{margin-bottom:14px}.card-group h3{font-size:14px;margin:0 0 6px}
+.credit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:6px 0;border-top:1px solid var(--line)}
+.bar{grid-column:1/-1;height:8px;background:var(--track);border-radius:4px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--ok)}
+.credit.soon .bar>i{background:var(--warn)}.exp{font-size:12px;color:var(--muted)}.credit.soon .exp{color:var(--warn);font-weight:600}
+form{display:grid;grid-template-columns:1fr 1fr;gap:8px}form label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:2px}
+input,select,button{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer}.full{grid-column:1/-1}.chk{flex-direction:row!important;align-items:center;gap:6px!important}
+.rank{list-style:none;padding:0;margin:12px 0 0}.rank li{border-top:1px solid var(--line);padding:8px 0}.rank b{font-variant-numeric:tabular-nums}
+details{margin-top:4px}summary{cursor:pointer;color:var(--accent);font-size:13px}
+.clause{font-size:13px;background:var(--bg);border-left:3px solid var(--accent);padding:6px 8px;margin:6px 0;border-radius:0 6px 6px 0}
+mark{background:var(--mark);color:inherit;padding:0 1px}.note{font-size:12px;color:var(--muted)}
+.answer{margin-top:12px}.answer p{margin:0 0 8px}.claim{border-top:1px solid var(--line);padding:6px 0;font-size:14px}
+.stack{display:flex;flex-direction:column;gap:16px}
+</style>
+</head>
+<body>
+<header><h1>perkpilot</h1><span class="muted">cited answers from your card terms</span><span class="badge" id="meta">loading…</span></header>
+<main>
+<section><h2>Monthly credit tracker</h2><div id="credits">loading…</div></section>
+<div class="stack">
+<section><h2>Which card?</h2>
+<form id="sim">
+<label class="full">Merchant<input name="merchant" value="Joe's Bistro"></label>
+<label>Amount ($)<input name="amount" type="number" step="0.01" value="80"></label>
+<label>Category<select name="merchant_category"><option>dining</option><option value="us_supermarkets">supermarkets</option><option>flights</option><option>hotels</option><option>drugstores</option><option>gas</option><option>other</option><option value="gift_card">gift card</option></select></label>
+<label>Payment<select name="payment_method"><option value="card_present">card present</option><option>online</option><option value="mobile_card_reader">mobile card reader</option><option value="third_party_processor">third-party processor</option></select></label>
+<label class="chk"><input type="checkbox" name="foreign"> Outside the U.S.</label>
+<button class="full">Check</button>
+</form>
+<ol class="rank" id="ranked"></ol>
+</section>
+<section><h2>Ask</h2>
+<form id="ask"><label class="full">Question<input name="question" value="Which credits expire this month?"></label><button class="full">Ask</button></form>
+<div class="answer" id="answer"></div>
+</section>
+</div>
+</main>
+<script>
+const $=s=>document.querySelector(s), names={};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const money=v=>'$'+Number(v).toFixed(2);
+const clauseCache={};
+async function clause(id){return clauseCache[id]??=await (await fetch('/api/clause/'+id)).json()}
+async function renderCitations(el,cites){
+  const by={};for(const c of cites){(by[c.clause_id]??=[]).push(c)}
+  const parts=await Promise.all(Object.entries(by).map(async([id,cs])=>{
+    const cl=await clause(id);let t=cl.text;
+    const spans=cs.filter(c=>c.start!=null).map(c=>[c.start-cl.start,c.end-cl.start]).sort((a,b)=>a[0]-b[0]);
+    let out='',pos=0;for(const[s,e]of spans){if(s<pos)continue;out+=esc(t.slice(pos,s))+'<mark>'+esc(t.slice(s,e))+'</mark>';pos=e}
+    out+=esc(t.slice(pos));return `<div class="clause">${out}</div>`}));
+  el.innerHTML=parts.join('')}
+function citeBlock(cites,label='Source clauses'){
+  if(!cites||!cites.length)return '';const id='c'+Math.random().toString(36).slice(2);
+  setTimeout(()=>{const d=document.getElementById(id);d.addEventListener('toggle',()=>{if(d.open&&!d.dataset.done){d.dataset.done=1;renderCitations(d.querySelector('div'),cites)}},{once:false})});
+  return `<details id="${id}"><summary>${label} (${[...new Set(cites.map(c=>c.clause_id))].join(', ')})</summary><div>loading…</div></details>`}
+async function loadMeta(){const m=await (await fetch('/api/meta')).json();Object.assign(names,m.cards);
+  $('#meta').textContent=`as of ${m.as_of} · LLM: ${m.llm}${m.llm==='offline-scripted'?' (scripted, not a model)':''} · synthetic data`}
+async function loadCredits(){
+  const rows=await (await fetch('/api/credits')).json();const groups={};
+  for(const r of rows)(groups[r.card]??=[]).push(r);
+  $('#credits').innerHTML=Object.entries(groups).map(([card,cs])=>`<div class="card-group"><h3>${esc(names[card]||card)}</h3>${cs.map(c=>{
+    const pct=Math.min(100,100*c.used/c.amount),soon=c.remaining>0&&c.days_left<=30;
+    return `<div class="credit ${soon?'soon':''}"><span>${esc(c.name)} <span class="note">· ${c.period.replace('_','-')}</span></span><b>${money(c.used)} / ${money(c.amount)}</b>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <span class="exp">${c.remaining>0?`${money(c.remaining)} left · expires ${c.window_end} (${c.days_left} days)`:`fully used · resets after ${c.window_end}`}</span><span></span>
+    <div class="full" style="grid-column:1/-1">${citeBlock(c.citations,'Terms')}</div></div>`}).join('')}</div>`).join('')}
+$('#sim').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);
+  const body={merchant:f.get('merchant'),amount:+f.get('amount'),merchant_category:f.get('merchant_category'),payment_method:f.get('payment_method'),foreign:f.get('foreign')==='on'};
+  const r=await (await fetch('/api/simulate',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)})).json();
+  $('#ranked').innerHTML=r.ranked.map((o,i)=>`<li>${i+1}. <strong>${esc(names[o.card])}</strong> · <b>${money(o.expected_value)}</b> <span class="note">${o.multiplier}x · ${o.points} pts${o.ftf_cost?` · −${money(o.ftf_cost)} FX fee`:''}</span>
+    ${o.notes.length?`<div class="note">${o.notes.map(esc).join('<br>')}</div>`:''}${citeBlock(o.citations)}</li>`).join('')});
+$('#ask').addEventListener('submit',async e=>{e.preventDefault();$('#answer').textContent='thinking…';
+  const q=new FormData(e.target).get('question');
+  const a=await (await fetch('/api/ask',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:q})})).json();
+  $('#answer').innerHTML=`<p>${a.abstained?'🤷 ':''}${esc(a.answer)}</p>`+a.claims.map(c=>`<div class="claim">${esc(c.text)}${citeBlock(c.citations)}</div>`).join('')
+   +`<p class="note">tools: ${a.tool_calls.map(t=>t.name).join(' → ')||'none'}</p>`});
+// ?ask=...&cite=1&m=...&cat=...&pm=... let the README demo frames be captured headlessly
+const qs=new URLSearchParams(location.search);
+for(const[k,n]of[['m','merchant'],['amt','amount'],['cat','merchant_category'],['pm','payment_method']])if(qs.get(k))$(`#sim [name=${n}]`).value=qs.get(k);
+loadMeta().then(loadCredits).then(async()=>{$('#sim').requestSubmit();
+  if(qs.get('ask')){$('#ask [name=question]').value=qs.get('ask');$('#ask').requestSubmit()}
+  if(qs.get('cite'))setTimeout(()=>document.querySelectorAll(qs.get('cite')==='ask'?'#answer details':'#ranked details').forEach((d,i)=>{if(i<2)d.open=true}),400)});
+</script>
+</body>
+</html>
