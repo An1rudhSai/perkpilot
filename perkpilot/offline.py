@@ -237,3 +237,44 @@ def _task_validate_rule(self, messages, tools) -> ChatResult:
 
 
 ScriptedLLM._task_validate_rule = _task_validate_rule
+
+
+# ---------------------------------------------------------------- agent / RAG / plain policies
+
+def _tool_results(messages: list[dict]) -> list[tuple[str, dict, object]]:
+    args_by_id = {}
+    for m in messages:
+        for c in m.get("tool_calls") or []:
+            args_by_id[c["id"]] = (c["function"]["name"], json.loads(c["function"]["arguments"]))
+    return [(*args_by_id[m["tool_call_id"]], json.loads(m["content"])) for m in messages if m["role"] == "tool"]
+
+
+def _task_agent(self, messages, tools) -> ChatResult:
+    from .llm import ToolCall
+    from .scripted import agent_compose, agent_plan
+
+    question = next(m["content"] for m in messages if m["role"] == "user")
+    results = _tool_results(messages)
+    nxt = agent_plan(question) if not results else agent_compose(question, results)
+    if isinstance(nxt, str):
+        return ChatResult(content=nxt)
+    base = len(results)
+    return ChatResult(tool_calls=[ToolCall(id=f"call_{base + i}", name=n, arguments=a) for i, (n, a) in enumerate(nxt)])
+
+
+def _task_rag_qa(self, messages, tools) -> ChatResult:
+    from .scripted import rag_answer
+
+    p = json.loads(messages[-1]["content"])
+    return ChatResult(content=rag_answer(p["question"], p["clauses"]))
+
+
+def _task_plain_qa(self, messages, tools) -> ChatResult:
+    from .scripted import plain_answer
+
+    return ChatResult(content=plain_answer(messages[-1]["content"]))
+
+
+ScriptedLLM._task_agent = _task_agent
+ScriptedLLM._task_rag_qa = _task_rag_qa
+ScriptedLLM._task_plain_qa = _task_plain_qa
